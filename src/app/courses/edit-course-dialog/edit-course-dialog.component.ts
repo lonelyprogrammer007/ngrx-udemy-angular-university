@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, Output, EventEmitter} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Course} from '../model/course';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -11,6 +11,8 @@ import {CoursesHttpService} from '../services/courses-http.service';
   styleUrls: ['./edit-course-dialog.component.css']
 })
 export class EditCourseDialogComponent {
+
+  @Output() onSaveFinish = new EventEmitter<any>();
 
   form: FormGroup;
 
@@ -65,7 +67,10 @@ export class EditCourseDialogComponent {
 
     this.coursesService.saveCourse(course.id, course)
       .subscribe(
-        () => this.dialogRef.close()
+        () => {
+          this.dialogRef.close();
+          this.onSaveFinish.emit();
+        }
       )
 
 

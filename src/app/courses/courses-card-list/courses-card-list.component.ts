@@ -35,9 +35,11 @@ export class CoursesCardListComponent implements OnInit {
           mode: 'update'
         };
 
-        this.dialog.open(EditCourseDialogComponent, dialogConfig)
-          .afterClosed()
-          .subscribe(() => this.courseChanged.emit());
+        const dialogRef = this.dialog.open(EditCourseDialogComponent, dialogConfig)
+
+        dialogRef.componentInstance.onSaveFinish.subscribe(() => {
+          this.courseChanged.emit()
+        })
 
     }
 
