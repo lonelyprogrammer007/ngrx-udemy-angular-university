@@ -9,6 +9,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint angular-ngrx-course",
+    "lint:fix": "ng lint --fix angular-ngrx-course",
     "e2e": "ng e2e",
     "format:code": "prettier --write ."
   },
