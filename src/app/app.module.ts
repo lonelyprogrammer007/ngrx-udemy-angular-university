@@ -45,7 +45,7 @@ const routes: Routes = [
     MatProgressSpinnerModule,
     MatListModule,
     MatToolbarModule,
-    AuthModule.forRoot(),
+    AuthModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
     }),

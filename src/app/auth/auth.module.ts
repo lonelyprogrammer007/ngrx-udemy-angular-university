@@ -19,16 +19,17 @@ import * as fromAuth from './reducers';
     MatInputModule,
     MatButtonModule,
     RouterModule.forChild([{ path: '', component: LoginComponent }]),
-    StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.reducers),
+    StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.authReducer),
   ],
   declarations: [LoginComponent],
   exports: [LoginComponent],
+  providers: [AuthService],
 })
 export class AuthModule {
-  static forRoot(): ModuleWithProviders<AuthModule> {
-    return {
-      ngModule: AuthModule,
-      providers: [AuthService],
-    };
-  }
+  // static forRoot(): ModuleWithProviders<AuthModule> {
+  //   return {
+  //     ngModule: AuthModule,
+  //     providers: [AuthService],
+  //   };
+  // }
 }
