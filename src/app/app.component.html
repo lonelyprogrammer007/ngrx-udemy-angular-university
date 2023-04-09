@@ -11,7 +11,7 @@
         <span>Login</span>
       </a>
 
-      <a mat-list-item (click)="logout()" *ngIf="isLoggedId$ | async">
+      <a mat-list-item (click)="logout()" *ngIf="isLoggedIn$ | async">
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
       </a>
