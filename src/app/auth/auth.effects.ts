@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { AuthActions } from './auth-types';
+import { AuthActions } from './action.types';
 import { tap } from 'rxjs/operators';
 
 export const USER_LOCAL_STORAGE_KEY = 'user';

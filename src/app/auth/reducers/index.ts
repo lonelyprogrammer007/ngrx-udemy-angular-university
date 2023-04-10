@@ -7,7 +7,7 @@ import {
   MetaReducer,
   on,
 } from '@ngrx/store';
-import { AuthActions } from '../auth-types';
+import { AuthActions } from '../action.types';
 import { User } from '../model/user.model';
 
 export const authFeatureKey = 'auth';
