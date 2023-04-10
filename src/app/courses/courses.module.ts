@@ -22,6 +22,8 @@ import { CoursesCardListComponent } from './courses-card-list/courses-card-list.
 import { EditCourseDialogComponent } from './edit-course-dialog/edit-course-dialog.component';
 import { HomeComponent } from './home/home.component';
 import { CoursesHttpService } from './services/courses-http.service';
+import { EffectsModule } from '@ngrx/effects';
+import { CourseEffects } from './course.effects';
 
 export const coursesRoutes: Routes = [
   {
@@ -54,6 +56,7 @@ export const coursesRoutes: Routes = [
     MatMomentDateModule,
     ReactiveFormsModule,
     RouterModule.forChild(coursesRoutes),
+    EffectsModule.forFeature([CourseEffects]),
   ],
   declarations: [
     HomeComponent,
