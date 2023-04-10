@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.warn('ngOnInit()')
     this.reload();
   }
 
