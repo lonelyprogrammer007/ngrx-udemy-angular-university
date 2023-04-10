@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import {
   NavigationCancel,
   NavigationEnd,
@@ -9,9 +6,12 @@ import {
   NavigationStart,
   Router,
 } from '@angular/router';
-import { AppState } from './reducers';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { selectIsLoggedIn, selectIsLoggedOut } from './auth.selectors';
 import { AuthActions } from './auth/auth-types';
+import { loginReset } from './auth/auth.actions';
+import { USER_LOCAL_STORAGE_KEY } from './auth/auth.effects';
 
 @Component({
   selector: 'app-root',
@@ -22,10 +22,12 @@ export class AppComponent implements OnInit {
   loading = true;
   isLoggedIn$: Observable<boolean>;
   isLoggedOut$: Observable<boolean>;
+  isLoggedIn = false;
 
   constructor(private router: Router, private store: Store) {}
 
   ngOnInit() {
+    this.configLocalStorageAuthData();
     this.configNavigationEvents();
     this.isLoggedIn$ = this.store.select(selectIsLoggedIn);
     this.isLoggedOut$ = this.store.select(selectIsLoggedOut);
@@ -42,6 +44,7 @@ export class AppComponent implements OnInit {
         case event instanceof NavigationCancel:
         case event instanceof NavigationError: {
           this.loading = false;
+          this.setInitialPage();
           break;
         }
         default: {
@@ -49,6 +52,20 @@ export class AppComponent implements OnInit {
         }
       }
     });
+  }
+
+  private setInitialPage() {
+    if (this.isLoggedIn) {
+      this.router.navigateByUrl('/courses');
+    }
+  }
+
+  private configLocalStorageAuthData() {
+    const user = localStorage.getItem(USER_LOCAL_STORAGE_KEY);
+    if (user) {
+      this.isLoggedIn = true;
+      this.store.dispatch(loginReset({ user: JSON.parse(user) }));
+    }
   }
 
   logout() {
