@@ -8,10 +8,10 @@ import {
 } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectIsLoggedIn, selectIsLoggedOut } from './auth.selectors';
 import { AuthActions } from './auth/action.types';
 import { loginReset } from './auth/auth.actions';
 import { USER_LOCAL_STORAGE_KEY } from './auth/auth.effects';
+import { selectIsLoggedIn, selectIsLoggedOut } from './auth/auth.selectors';
 
 @Component({
   selector: 'app-root',

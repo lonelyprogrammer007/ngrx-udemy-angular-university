@@ -18,3 +18,5 @@ export const reducer = createReducer(
     adapter.addMany(action.data, state)
   )
 );
+
+export const coursesSelector = adapter.getSelectors();
