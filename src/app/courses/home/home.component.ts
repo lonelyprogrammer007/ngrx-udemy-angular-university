@@ -30,11 +30,10 @@ export class HomeComponent implements OnInit {
   constructor(private dialog: MatDialog, private store: Store) {}
 
   ngOnInit() {
-    // console.warn('ngOnInit()');
-    this.reload();
+    this.configStateConnection();
   }
 
-  reload() {
+  configStateConnection() {
     this.beginnerCourses$ = this.store.select(selectBeginnerCourses);
     this.advancedCourses$ = this.store.select(selectAdvancedCourses);
     this.promoTotal$ = this.store.select(selectPromoTotal);
