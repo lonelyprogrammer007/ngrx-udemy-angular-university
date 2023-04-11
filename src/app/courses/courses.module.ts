@@ -31,7 +31,7 @@ export const coursesRoutes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    resolve: { courses: courseResolver },
+    resolve: [courseResolver],
   },
   {
     path: ':courseUrl',

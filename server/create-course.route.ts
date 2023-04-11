@@ -4,7 +4,7 @@ import { COURSES } from './db-data';
 export var coursesKeyCounter = 100;
 
 export function createCourse(req: Request, res: Response) {
-  console.log('Creating new course ...');
+  // console.log('Creating new course ...');
 
   const changes = req.body;
 

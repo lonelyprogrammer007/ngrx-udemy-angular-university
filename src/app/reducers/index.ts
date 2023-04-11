@@ -14,8 +14,8 @@ export function logger(
   reducer: ActionReducer<unknown>
 ): ActionReducer<unknown> {
   return (state, action) => {
-    console.log('state before', state);
-    console.log('action', action);
+    // console.log('state before', state);
+    // console.log('action', action);
 
     return reducer(state, action);
   };

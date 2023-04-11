@@ -3,7 +3,7 @@ import { LESSONS } from './db-data';
 import { setTimeout } from 'timers';
 
 export function searchLessons(req: Request, res: Response) {
-  console.log('Searching for lessons ...');
+  // console.log('Searching for lessons ...');
 
   const queryParams = req.query as any;
 
@@ -31,9 +31,9 @@ export function searchLessons(req: Request, res: Response) {
 
   const initialPos = pageNumber * pageSize;
 
-  console.log(
-    `Retrieving lessons page starting at position ${initialPos}, page size ${pageSize} for course ${courseId}`
-  );
+  // console.log(
+  //   `Retrieving lessons page starting at position ${initialPos}, page size ${pageSize} for course ${courseId}`
+  // );
 
   const lessonsPage = lessons.slice(initialPos, initialPos + pageSize);
 

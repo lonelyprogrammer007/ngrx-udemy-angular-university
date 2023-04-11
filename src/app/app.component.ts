@@ -44,7 +44,6 @@ export class AppComponent implements OnInit {
         case event instanceof NavigationCancel:
         case event instanceof NavigationError: {
           this.loading = false;
-          this.setInitialPage();
           break;
         }
         default: {
@@ -52,12 +51,6 @@ export class AppComponent implements OnInit {
         }
       }
     });
-  }
-
-  private setInitialPage() {
-    if (this.isLoggedIn) {
-      this.router.navigateByUrl('/courses');
-    }
   }
 
   private configLocalStorageAuthData() {

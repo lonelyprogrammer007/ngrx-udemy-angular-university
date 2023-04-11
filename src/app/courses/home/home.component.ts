@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { loadCourses } from '../course.actions';
 import {
   selectAdvancedCourses,
   selectBeginnerCourses,
+  selectAllCoursesLoaded,
   selectPromoTotal,
 } from '../courses.selectors';
 import { EditCourseDialogComponent } from '../edit-course-dialog/edit-course-dialog.component';
@@ -19,7 +21,7 @@ import { defaultDialogConfig } from '../shared/default-dialog-config';
 export class HomeComponent implements OnInit {
   promoTotal$: Observable<number>;
 
-  loading$: Observable<boolean>;
+  allCoursesLoaded$: Observable<boolean>;
 
   beginnerCourses$: Observable<Course[]>;
 
@@ -28,7 +30,7 @@ export class HomeComponent implements OnInit {
   constructor(private dialog: MatDialog, private store: Store) {}
 
   ngOnInit() {
-    console.warn('ngOnInit()');
+    // console.warn('ngOnInit()');
     this.reload();
   }
 
@@ -36,6 +38,7 @@ export class HomeComponent implements OnInit {
     this.beginnerCourses$ = this.store.select(selectBeginnerCourses);
     this.advancedCourses$ = this.store.select(selectAdvancedCourses);
     this.promoTotal$ = this.store.select(selectPromoTotal);
+    this.allCoursesLoaded$ = this.store.select(selectAllCoursesLoaded);
   }
 
   onAddCourse() {
